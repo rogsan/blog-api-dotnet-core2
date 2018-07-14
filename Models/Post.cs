@@ -9,9 +9,9 @@ namespace blog_api_dotnet_core2.Models
         public String Url { get; set; }
         public string ImageUrl { get; set;}
 
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
         public Guid CategoryId { get; set; }
-        public IEnumerable<string> Tags { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
 
         public String Title { get; set; }
         public String Body { get; set; }
