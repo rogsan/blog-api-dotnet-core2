@@ -8,7 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
+using blog_api_dotnet_core2.Models.Context;
 
 namespace blog_api_dotnet_core2
 {
@@ -25,6 +27,12 @@ namespace blog_api_dotnet_core2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            // Sql Server DbContext
+            string cnnStr = Configuration["Database:ConnectionString"];
+            services.AddDbContext<BlogDbContext>(options => 
+                options.UseLazyLoadingProxies()
+                .UseSqlServer(cnnStr));
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(options => options.SwaggerDoc("v1", new Info() { Title="", Version="v1" }));
