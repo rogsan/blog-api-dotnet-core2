@@ -7,7 +7,7 @@ namespace blog_api_dotnet_core2.Models
     {
         public Guid Id { get; set; }
         public String Url { get; set; }
-        public string ImageUrl { get; set;}
+        public string ImageUrl { get; set; }
 
         public virtual Category Category { get; set; }
         public Guid CategoryId { get; set; }
