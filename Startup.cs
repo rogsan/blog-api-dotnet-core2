@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
+using blog_api_dotnet_core2.Interfaces;
+using blog_api_dotnet_core2.Repositories;
+using blog_api_dotnet_core2.Models;
 using blog_api_dotnet_core2.Models.Context;
 
 namespace blog_api_dotnet_core2
@@ -27,6 +30,9 @@ namespace blog_api_dotnet_core2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            // Repositories
+            services.AddScoped<IRepository<Category>, CategoryRepository>();
 
             // Sql Server DbContext
             string cnnStr = Configuration["Database:ConnectionString"];
