@@ -1,11 +1,13 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace blog_api_dotnet_core2.Models
 {
-    public class Category
+    public class Category : BaseModel
     {
-        public Guid Id { get; set; }
-        public Guid ParentId { get; set; }
+        [Required]
         public String Name { get; set; }
+
+        public Guid? ParentId { get; set; }
     }
 }

@@ -1,22 +1,27 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace blog_api_dotnet_core2.Models
 {
-    public class Post
+    public class Post : BaseModel
     {
-        public Guid Id { get; set; }
+        [Required]
         public String Url { get; set; }
-        public string ImageUrl { get; set; }
+        
+        [Required]
+        public String ImageUrl { get; set; }
 
         public virtual Category Category { get; set; }
         public Guid CategoryId { get; set; }
-        public virtual ICollection<Tag> Tags { get; set; }
 
+        [Required]
+        public String Tags { get; set; }
+
+        [Required]
         public String Title { get; set; }
+        
+        [Required]
         public String Body { get; set; }
-
-        public DateTime CreatedAt { get; set; }
-        public String CreatedBy { get; set; }
     }
 }
